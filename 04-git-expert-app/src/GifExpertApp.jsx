@@ -1,11 +1,15 @@
 import { useState } from "react"
 import AgregarCategoria from './components/AgregarCategoria';
+import { GifGrid } from "./components/GifGrid";
 
 const GifExpertApp = () => {
 
     const [categorias, setCategorias] = useState(["Elden Ring", "Jedi Knight III: Jedi Academy"]);
 
     const agregarCategoria = (categoria) => {
+        if (categorias.includes(categoria.toLowerCase())) {
+            return;
+        }
         setCategorias([...categorias, categoria]);
     }
 
@@ -23,13 +27,15 @@ const GifExpertApp = () => {
             */}
             <AgregarCategoria onNuevoValor={event => { agregarCategoria(event) }} /*setCategorias={setCategorias}*/></AgregarCategoria>
 
-            <ol>
-                {
-                    categorias.map(categoria => {
-                        return <li key={categoria}>{categoria}</li>
-                    })
-                }
-            </ol>
+            {
+                categorias.map(categoria => {
+                    return (
+                        <GifGrid key={categoria} categoria={categoria}>
+                        </GifGrid>
+                    )
+                    // <li key={categoria}>{categoria}</li>
+                })
+            }
         </>
     );
 }
