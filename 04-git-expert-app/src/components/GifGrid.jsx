@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { obtenerGifs } from '../helpers/gifs.service';
 
 export const GifGrid = ({ categoria }) => {
+    useEffect(() => {
+        const obtener = async () => {
+            await obtenerGifs(categoria);
+        }
+        return obtener;
+    }, [])
 
-    const obtenerGifs = async () => {
-        const api_key = '2YoVwESf4IRJwaY8QkdG0sbe13jxngZn';
-
-        const url = `api.giphy.com/v1/gifs/search?api_key=${api_key}&q=${categoria}`;
-        const resp = await fetch(url);
-        const respJSON = await resp.data;
-        console.log(respJSON);
-    }
-
-    obtenerGifs();
+    // const gifs = obtenerGifs(categoria);
+    // gifs.then(gif => {
+    //     console.log(gif);
+    // })
 
     return (
         <>
