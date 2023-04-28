@@ -33,4 +33,4 @@ const AgregarCategoria = (props) => {
     )
 }
 
-export default AgregarCategoria
+export { AgregarCategoria }
