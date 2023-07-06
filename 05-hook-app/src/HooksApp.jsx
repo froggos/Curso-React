@@ -1,5 +1,9 @@
-export const HooksApp = () => {
+const HooksApp = () => {
     return (
-        <h1>HooksApp</h1>
+        <div>
+            <h1>HooksApp</h1>
+        </div>
     )
 }
+
+export default HooksApp
